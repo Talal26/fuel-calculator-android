@@ -55,6 +55,7 @@ fun NumberField(
     label: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
+    imeAction: ImeAction = ImeAction.Next
 ) {
     TextField(
         value = value,
@@ -64,13 +65,13 @@ fun NumberField(
         label = { Text(label) },
         keyboardOptions = KeyboardOptions.Default.copy(
             keyboardType = KeyboardType.Number,
-            imeAction = ImeAction.Next
+            imeAction = imeAction
         )
     )
 }
 
-private fun calculateNumberOfLaps(totalRaceTimeInMinutes: Int, lapTimeInSeconds: Int) : Double {
-    val lapTimeInMinutes = lapTimeInSeconds.toDouble() / 60
+private fun calculateNumberOfLaps(totalRaceTimeInMinutes: Int, lapTimeInSeconds: Double) : Double {
+    val lapTimeInMinutes = lapTimeInSeconds / 60
 
     return totalRaceTimeInMinutes / lapTimeInMinutes
 }
@@ -88,7 +89,7 @@ fun FuelCalculatorApp(modifier: Modifier = Modifier) {
     val raceMinutes = raceMinutesInput.toIntOrNull() ?: 0
 
     val lapMinutes = lapMinutesInput.toIntOrNull() ?: 0
-    val lapSeconds = lapSecondsInput.toIntOrNull() ?: 0
+    val lapSeconds = lapSecondsInput.toDoubleOrNull() ?: 0.0
 
     val fuelPerLap  = fuelPerLapInput.toDoubleOrNull() ?: 0.0
 
@@ -103,7 +104,6 @@ fun FuelCalculatorApp(modifier: Modifier = Modifier) {
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(Modifier.weight(1f))
 
         Text(
             "Total Race Time",
@@ -133,8 +133,6 @@ fun FuelCalculatorApp(modifier: Modifier = Modifier) {
                     .weight(1f)
             )
         }
-
-        Spacer(Modifier.height(16.dp))
 
         Text(
             "Lap Time",
@@ -167,17 +165,16 @@ fun FuelCalculatorApp(modifier: Modifier = Modifier) {
 
         }
 
-        Spacer(Modifier.height(32.dp))
-
         NumberField(
             value = fuelPerLapInput,
             label = "Fuel Consumption Per Lap (L)",
             onValueChange = { fuelPerLapInput = it },
             modifier = Modifier
-                .padding(8.dp)
+                .padding(8.dp),
+            imeAction = ImeAction.Done
         )
 
-        Spacer(Modifier.weight(0.25f))
+        Spacer(Modifier.height(16.dp))
 
         Text(
             "Number of laps ${numberOfLaps.format(1)}",
@@ -187,10 +184,7 @@ fun FuelCalculatorApp(modifier: Modifier = Modifier) {
 
         Text(
             "Total Fuel Needed: ${totalFuelNeeded.format(1)} L",
-            fontSize = 24.sp,
-            modifier = Modifier.padding(vertical = 8.dp)
+            fontSize = 24.sp
         )
-
-        Spacer(Modifier.weight(0.5f))
     }
 }
