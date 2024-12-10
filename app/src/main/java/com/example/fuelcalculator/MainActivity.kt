@@ -23,13 +23,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.fuelcalculator.ui.theme.FuelCalculatorTheme
+import com.example.fuelcalculator.ui.theme.Typography
+import kotlin.math.ceil
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +42,9 @@ class MainActivity : ComponentActivity() {
             FuelCalculatorTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     FuelCalculatorApp(
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(dimensionResource(R.dimen.outer_padding))
                     )
                 }
             }
@@ -70,6 +75,26 @@ fun NumberField(
     )
 }
 
+@Composable
+fun Colon(modifier: Modifier = Modifier) {
+    Text(
+        ":",
+        fontSize = 20.sp,
+        fontWeight = FontWeight.ExtraBold,
+        modifier = modifier.padding(dimensionResource(R.dimen.padding_small))
+    )
+}
+
+@Composable
+fun RowHeader(text: String, modifier: Modifier = Modifier) {
+    Text(
+        text = text,
+        style = Typography.labelSmall,
+        textAlign = TextAlign.Left,
+        modifier = modifier.fillMaxWidth()
+    )
+}
+
 private fun calculateNumberOfLaps(totalRaceTimeInMinutes: Int, lapTimeInSeconds: Double) : Double {
     val lapTimeInMinutes = lapTimeInSeconds / 60
 
@@ -97,7 +122,7 @@ fun FuelCalculatorApp(modifier: Modifier = Modifier) {
     val lapTimeInSeconds = lapMinutes * 60 + lapSeconds
 
     val numberOfLaps = calculateNumberOfLaps(totalRaceTimeInMinutes, lapTimeInSeconds)
-    val totalFuelNeeded = fuelPerLap * numberOfLaps
+    val totalFuelNeeded = fuelPerLap * ceil(numberOfLaps)
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -105,64 +130,54 @@ fun FuelCalculatorApp(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Text(
-            "Total Race Time",
-            textAlign = TextAlign.Left,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 8.dp)
-        )
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        RowHeader("Total Race Time")
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(vertical = dimensionResource(R.dimen.padding_small))
+        ) {
             NumberField(
                 value = raceHoursInput,
                 label = "Hours",
                 onValueChange = { raceHoursInput = it },
                 modifier = Modifier
-                    .padding(8.dp)
                     .weight(1f)
             )
 
-            Text(":")
+            Colon()
 
             NumberField(
                 value = raceMinutesInput,
                 label = "Minutes",
                 onValueChange = { raceMinutesInput = it },
                 modifier = Modifier
-                    .padding(8.dp)
                     .weight(1f)
             )
         }
 
-        Text(
-            "Lap Time",
-            textAlign = TextAlign.Left,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 8.dp)
-        )
+        RowHeader("Lap Time")
 
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(vertical = dimensionResource(R.dimen.padding_small))
+        ) {
             NumberField(
                 value = lapMinutesInput,
                 label = "Minutes",
                 onValueChange = { lapMinutesInput = it },
                 modifier = Modifier
-                    .padding(8.dp)
                     .weight(1f)
             )
 
-            Text(":")
+            Colon()
 
             NumberField(
                 value = lapSecondsInput,
                 label = "Seconds",
                 onValueChange = { lapSecondsInput = it },
                 modifier = Modifier
-                    .padding(8.dp)
                     .weight(1f)
             )
-
         }
 
         NumberField(
@@ -170,21 +185,22 @@ fun FuelCalculatorApp(modifier: Modifier = Modifier) {
             label = "Fuel Consumption Per Lap (L)",
             onValueChange = { fuelPerLapInput = it },
             modifier = Modifier
-                .padding(8.dp),
+                .padding(dimensionResource(R.dimen.padding_small)),
             imeAction = ImeAction.Done
         )
 
-        Spacer(Modifier.height(16.dp))
+        Spacer(Modifier.height(dimensionResource(R.dimen.padding_medium)))
 
         Text(
             "Number of laps ${numberOfLaps.format(1)}",
-            fontSize = 24.sp,
-            modifier = Modifier.padding(vertical = 8.dp)
+            style = Typography.labelLarge,
+            modifier = Modifier.padding(vertical = dimensionResource(R.dimen.padding_small))
         )
 
         Text(
             "Total Fuel Needed: ${totalFuelNeeded.format(1)} L",
-            fontSize = 24.sp
+            style = Typography.labelLarge,
+            modifier = Modifier.padding(vertical = dimensionResource(R.dimen.padding_small))
         )
     }
 }
