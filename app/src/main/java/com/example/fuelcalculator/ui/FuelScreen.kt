@@ -99,12 +99,16 @@ fun FuelScreen(
             modifier = Modifier
                 .padding(vertical = dimensionResource(R.dimen.padding_small))
         ) {
-            NumberField(
+            TextField(
                 value = fuelViewModel.fuelPerLapInput,
-                label = "Fuel Consumption Per Lap (L)",
+                singleLine = true,
+                modifier = Modifier.weight(1f),
                 onValueChange = { fuelViewModel.updateFuelPerLap(it) },
-                modifier = Modifier
-                    .weight(1f)
+                label = { Text("Fuel Consumption Per Lap (L)", maxLines = 1, style = Typography.bodySmall) },
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Next
+                )
             )
 
             Spacer(modifier = Modifier.width(16.dp))
@@ -150,7 +154,7 @@ fun NumberField(
         singleLine = true,
         modifier = modifier,
         onValueChange = onValueChange,
-        label = { Text(label) },
+        label = { Text(label, maxLines = 1) },
         keyboardOptions = KeyboardOptions.Default.copy(
             keyboardType = KeyboardType.Number,
             imeAction = imeAction

@@ -44,7 +44,7 @@ class FuelViewModel : ViewModel() {
         val lapTimeInMinutes = lapMinutes + lapSeconds / 60
 
         val numberOfLaps = (raceTimeInMinutes / lapTimeInMinutes) + lapsMargin
-        val fuelNeeded = fuelPerLap * (ceil(numberOfLaps) + lapsMargin)
+        val fuelNeeded = fuelPerLap * ceil(numberOfLaps)
 
         _uiState.update { currentState ->
             currentState.copy(
