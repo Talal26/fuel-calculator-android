@@ -139,7 +139,7 @@ fun FuelScreen(
     }
 }
 
-fun Double.format(digits: Int) = "%.${digits}f".format(this)
+private fun Double.format(digits: Int) = "%.${digits}f".format(this)
 
 @Composable
 fun NumberField(
@@ -163,7 +163,7 @@ fun NumberField(
 }
 
 @Composable
-fun Colon(modifier: Modifier = Modifier) {
+private fun Colon(modifier: Modifier = Modifier) {
     Text(
         ":",
         fontSize = 20.sp,
@@ -173,7 +173,7 @@ fun Colon(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun RowHeader(text: String, modifier: Modifier = Modifier) {
+private fun RowHeader(text: String, modifier: Modifier = Modifier) {
     Text(
         text = text,
         style = Typography.labelSmall,
