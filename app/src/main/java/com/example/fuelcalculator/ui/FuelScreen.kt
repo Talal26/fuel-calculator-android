@@ -26,9 +26,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.fuelcalculator.R
+import com.example.fuelcalculator.ui.theme.FuelCalculatorTheme
 import com.example.fuelcalculator.ui.theme.Typography
 
-@Preview(showBackground = true)
 @Composable
 fun FuelScreen(
     fuelViewModel: FuelViewModel = viewModel(),
@@ -99,27 +99,25 @@ fun FuelScreen(
             modifier = Modifier
                 .padding(vertical = dimensionResource(R.dimen.padding_small))
         ) {
-            TextField(
+            NumberField(
                 value = fuelViewModel.fuelPerLapInput,
-                singleLine = true,
-                modifier = Modifier.weight(1f),
+                label = "Fuel Consumption",
                 onValueChange = { fuelViewModel.updateFuelPerLap(it) },
-                label = { Text("Fuel Consumption Per Lap (L)", maxLines = 1, style = Typography.bodySmall) },
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    keyboardType = KeyboardType.Number,
-                    imeAction = ImeAction.Next
-                )
+                modifier = Modifier.weight(1f),
+                imeAction = ImeAction.Next,
+                suffixText = "Litres/lap"
             )
 
             Spacer(modifier = Modifier.width(16.dp))
 
             NumberField(
                 value = fuelViewModel.lapsMarginInput,
-                label = "Number of Laps Margin",
+                label = "Safety margin",
                 onValueChange = { fuelViewModel.updateLapsMargin(it) },
                 modifier = Modifier
                     .weight(1f),
-                imeAction = ImeAction.Done
+                imeAction = ImeAction.Done,
+                suffixText = "Laps"
             )
         }
 
@@ -147,7 +145,8 @@ fun NumberField(
     label: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
-    imeAction: ImeAction = ImeAction.Next
+    imeAction: ImeAction = ImeAction.Next,
+    suffixText: String? = null
 ) {
     TextField(
         value = value,
@@ -158,7 +157,8 @@ fun NumberField(
         keyboardOptions = KeyboardOptions.Default.copy(
             keyboardType = KeyboardType.Number,
             imeAction = imeAction
-        )
+        ),
+        suffix = { suffixText?.let { Text(it) } }
     )
 }
 
@@ -180,4 +180,12 @@ private fun RowHeader(text: String, modifier: Modifier = Modifier) {
         textAlign = TextAlign.Left,
         modifier = modifier.fillMaxWidth()
     )
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun FuelScreenPreview() {
+    FuelCalculatorTheme {
+        FuelScreen()
+    }
 }
