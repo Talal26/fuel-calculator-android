@@ -55,32 +55,52 @@ class FuelViewModel : ViewModel() {
     }
 
     fun updateRaceHours(input: String) {
+        if (isInvalidIntegerInput(input)) return
+
         raceHoursInput = input
         calculate()
     }
 
     fun updateRaceMinutes(input: String) {
+        if (isInvalidDecimalInput(input)) return
+
         raceMinutesInput = input
         calculate()
     }
 
     fun updateLapMinutes(input: String) {
+        if (isInvalidIntegerInput(input)) return
+
         lapMinutesInput = input
         calculate()
     }
 
     fun updateLapSeconds(input: String) {
+        if (isInvalidDecimalInput(input)) return
+
         lapSecondsInput = input
         calculate()
     }
 
     fun updateFuelPerLap(input: String) {
+        if (isInvalidDecimalInput(input)) return
+
         fuelPerLapInput = input
         calculate()
     }
 
     fun updateLapsMargin(input: String) {
+        if (isInvalidIntegerInput(input)) return
+
         lapsMarginInput = input
         calculate()
     }
+}
+
+fun isInvalidIntegerInput(input: String): Boolean {
+    return """[^0-9]""".toRegex() in input
+}
+
+fun isInvalidDecimalInput(input: String): Boolean {
+    return """[^0-9.]""".toRegex() in input || input.count { it == '.' } > 1
 }
