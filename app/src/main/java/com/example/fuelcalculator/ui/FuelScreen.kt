@@ -42,7 +42,7 @@ fun FuelScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        RowHeader("Total Race Time")
+        RowHeader("Race duration")
 
         Row(
             verticalAlignment = Alignment.CenterVertically,
