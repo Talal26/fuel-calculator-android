@@ -24,3 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Fuel Calculator"
 include(":app")
+include(":app:benchmark")
