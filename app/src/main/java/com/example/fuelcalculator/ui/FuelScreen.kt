@@ -18,10 +18,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -129,13 +132,26 @@ fun FuelScreen(
         HorizontalDivider(modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium)))
 
         Text(
-            "Number of laps ${fuelUiState.numberOfLaps.format(1)}",
+            buildAnnotatedString {
+                append("Number of Laps: ")
+
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append(fuelUiState.numberOfLaps.format(1))
+                }
+            },
             style = Typography.labelLarge,
             modifier = Modifier.padding(vertical = dimensionResource(R.dimen.padding_small))
         )
 
         Text(
-            "Total Fuel Needed: ${fuelUiState.fuelNeeded.format(1)} L",
+            buildAnnotatedString {
+                append("Total Fuel Needed: ")
+
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append(fuelUiState.fuelNeeded.format(1))
+                    append("L")
+                }
+            },
             style = Typography.labelLarge,
             modifier = Modifier.padding(vertical = dimensionResource(R.dimen.padding_small))
         )

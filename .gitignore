@@ -35,3 +35,5 @@ google-services.json
 
 # My scripts
 install-release-to-device.bat
+
+.kotlin
