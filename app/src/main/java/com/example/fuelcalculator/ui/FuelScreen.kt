@@ -28,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.fuelcalculator.ui.test.TestTags
 import com.example.fuelcalculator.ui.theme.FuelCalculatorTheme
 import com.example.fuelcalculator.ui.theme.Typography
 
@@ -56,7 +57,7 @@ fun FuelScreen(
                 onValueChange = { fuelViewModel.updateRaceHours(it) },
                 modifier = Modifier
                     .weight(1f)
-                    .testTag("raceHoursField")
+                    .testTag(TestTags.RACE_HOURS_FIELD)
             )
 
             Colon()
@@ -67,7 +68,7 @@ fun FuelScreen(
                 onValueChange = { fuelViewModel.updateRaceMinutes(it) },
                 modifier = Modifier
                     .weight(1f)
-                    .testTag("raceMinutesField")
+                    .testTag(TestTags.RACE_MINUTES_FIELD)
             )
         }
 
@@ -83,7 +84,7 @@ fun FuelScreen(
                 onValueChange = { fuelViewModel.updateLapMinutes(it) },
                 modifier = Modifier
                     .weight(1f)
-                    .testTag("lapMinutesField")
+                    .testTag(TestTags.LAP_MINUTES_FIELD)
             )
 
             Colon()
@@ -94,7 +95,7 @@ fun FuelScreen(
                 onValueChange = { fuelViewModel.updateLapSeconds(it) },
                 modifier = Modifier
                     .weight(1f)
-                    .testTag("lapSecondsField")
+                    .testTag(TestTags.LAP_SECONDS_FIELD)
             )
         }
 
@@ -111,7 +112,7 @@ fun FuelScreen(
                 onValueChange = { fuelViewModel.updateFuelPerLap(it) },
                 modifier = Modifier
                     .weight(1f)
-                    .testTag("fuelConsumptionField"),
+                    .testTag(TestTags.FUEL_CONSUMPTION_FIELD),
                 imeAction = ImeAction.Next,
                 suffixText = "Litres/lap"
             )
@@ -124,7 +125,7 @@ fun FuelScreen(
                 onValueChange = { fuelViewModel.updateLapsMargin(it) },
                 modifier = Modifier
                     .weight(1f)
-                    .testTag("safetyMarginField"),
+                    .testTag(TestTags.SAFETY_MARGIN_FIELD),
                 imeAction = ImeAction.Done,
                 suffixText = "Laps"
             )
