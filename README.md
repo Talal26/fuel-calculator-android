@@ -1,7 +1,7 @@
 # Fuel Calculator Android App for Sim-Racing
 Calculate how many laps the race will be and how much fuel you'll need
 
-<img width="360" height="800" alt="Image" src="https://github.com/user-attachments/assets/a556416f-4ac4-4664-a79b-19fdb4d02bd0" />
+<img width="360" height="800" alt="Image" src="https://github.com/user-attachments/assets/9427e84f-c43e-46d5-9953-731e667c804c" />
 
 ### Input parameters
 * Race duration
