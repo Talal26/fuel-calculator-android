@@ -142,7 +142,9 @@ fun FuelScreen(
                 }
             },
             style = Typography.labelLarge,
-            modifier = Modifier.padding(vertical = 8.dp)
+            modifier = Modifier
+                .padding(vertical = 8.dp)
+                .testTag(TestTags.LAP_CALCULATION_OUTPUT)
         )
 
         Text(
@@ -155,7 +157,9 @@ fun FuelScreen(
                 }
             },
             style = Typography.labelLarge,
-            modifier = Modifier.padding(vertical = 8.dp)
+            modifier = Modifier
+                .padding(vertical = 8.dp)
+                .testTag(TestTags.FUEL_CALCULATION_OUTPUT)
         )
     }
 }

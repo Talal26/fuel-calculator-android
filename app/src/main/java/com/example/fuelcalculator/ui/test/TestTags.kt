@@ -7,4 +7,6 @@ object TestTags {
     const val LAP_SECONDS_FIELD = "lapSecondsField"
     const val FUEL_CONSUMPTION_FIELD = "fuelConsumptionField"
     const val SAFETY_MARGIN_FIELD = "safetyMarginField"
+    const val LAP_CALCULATION_OUTPUT = "lapCalculationOutput"
+    const val FUEL_CALCULATION_OUTPUT = "fuelCalculationOutput"
 }
