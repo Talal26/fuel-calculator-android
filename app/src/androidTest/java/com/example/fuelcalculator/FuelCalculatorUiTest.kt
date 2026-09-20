@@ -4,9 +4,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.SemanticsNodeInteraction
+import androidx.compose.ui.test.assertIsFocused
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.performImeAction
 import androidx.compose.ui.test.performTextClearance
 import androidx.compose.ui.test.performTextInput
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -106,23 +108,35 @@ class FuelCalculatorUiTest {
         val fuelResult = "39.0"
 
         // Entering inputs
-        composeTestRule.onNodeWithTag(TestTags.RACE_HOURS_FIELD).performTextClearance()
-        composeTestRule.onNodeWithTag(TestTags.RACE_HOURS_FIELD).performTextInput(raceHoursInput)
+        composeTestRule.onNodeWithTag(TestTags.RACE_HOURS_FIELD).apply {
+            performTextClearance()
+            performTextInput(raceHoursInput)
+        }
 
-        composeTestRule.onNodeWithTag(TestTags.RACE_MINUTES_FIELD).performTextClearance()
-        composeTestRule.onNodeWithTag(TestTags.RACE_MINUTES_FIELD).performTextInput(raceMinutesInput)
+        composeTestRule.onNodeWithTag(TestTags.RACE_MINUTES_FIELD).apply {
+            performTextClearance()
+            performTextInput(raceMinutesInput)
+        }
 
-        composeTestRule.onNodeWithTag(TestTags.LAP_MINUTES_FIELD).performTextClearance()
-        composeTestRule.onNodeWithTag(TestTags.LAP_MINUTES_FIELD).performTextInput(lapMinutesInput)
+        composeTestRule.onNodeWithTag(TestTags.LAP_MINUTES_FIELD).apply {
+            performTextClearance()
+            performTextInput(lapMinutesInput)
+        }
 
-        composeTestRule.onNodeWithTag(TestTags.LAP_SECONDS_FIELD).performTextClearance()
-        composeTestRule.onNodeWithTag(TestTags.LAP_SECONDS_FIELD).performTextInput(lapSecondsInput)
+        composeTestRule.onNodeWithTag(TestTags.LAP_SECONDS_FIELD).apply {
+            performTextClearance()
+            performTextInput(lapSecondsInput)
+        }
 
-        composeTestRule.onNodeWithTag(TestTags.FUEL_CONSUMPTION_FIELD).performTextClearance()
-        composeTestRule.onNodeWithTag(TestTags.FUEL_CONSUMPTION_FIELD).performTextInput(fuelConsumptionInput)
+        composeTestRule.onNodeWithTag(TestTags.FUEL_CONSUMPTION_FIELD).apply {
+            performTextClearance()
+            performTextInput(fuelConsumptionInput)
+        }
 
-        composeTestRule.onNodeWithTag(TestTags.SAFETY_MARGIN_FIELD).performTextClearance()
-        composeTestRule.onNodeWithTag(TestTags.SAFETY_MARGIN_FIELD).performTextInput(safetyMarginInput)
+        composeTestRule.onNodeWithTag(TestTags.SAFETY_MARGIN_FIELD).apply {
+            performTextClearance()
+            performTextInput(safetyMarginInput)
+        }
 
         // Checking output
         composeTestRule.onNodeWithTag(TestTags.LAP_CALCULATION_OUTPUT).assertTextContains(
@@ -133,6 +147,33 @@ class FuelCalculatorUiTest {
             fuelResult,
             substring = true
         )
+    }
+
+    @Test
+    fun imeAction() {
+        composeTestRule.onNodeWithTag(TestTags.RACE_HOURS_FIELD).performImeAction()
+
+        composeTestRule.onNodeWithTag(TestTags.RACE_MINUTES_FIELD).apply {
+            assertIsFocused()
+            performImeAction()
+        }
+
+        composeTestRule.onNodeWithTag(TestTags.LAP_MINUTES_FIELD).apply {
+            assertIsFocused()
+            performImeAction()
+        }
+
+        composeTestRule.onNodeWithTag(TestTags.LAP_SECONDS_FIELD).apply {
+            assertIsFocused()
+            performImeAction()
+        }
+
+        composeTestRule.onNodeWithTag(TestTags.FUEL_CONSUMPTION_FIELD).apply {
+            assertIsFocused()
+            performImeAction()
+        }
+
+        composeTestRule.onNodeWithTag(TestTags.SAFETY_MARGIN_FIELD).assertIsFocused()
     }
 }
 
