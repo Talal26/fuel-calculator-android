@@ -16,6 +16,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -31,8 +32,8 @@ import com.example.fuelcalculator.ui.theme.Typography
 
 @Composable
 fun FuelScreen(
-    fuelViewModel: FuelViewModel = viewModel(),
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    fuelViewModel: FuelViewModel = viewModel()
 ) {
     val fuelUiState by fuelViewModel.uiState.collectAsState()
 
@@ -54,6 +55,7 @@ fun FuelScreen(
                 onValueChange = { fuelViewModel.updateRaceHours(it) },
                 modifier = Modifier
                     .weight(1f)
+                    .testTag("raceHoursField")
             )
 
             Colon()
@@ -64,6 +66,7 @@ fun FuelScreen(
                 onValueChange = { fuelViewModel.updateRaceMinutes(it) },
                 modifier = Modifier
                     .weight(1f)
+                    .testTag("raceMinutesField")
             )
         }
 
@@ -79,6 +82,7 @@ fun FuelScreen(
                 onValueChange = { fuelViewModel.updateLapMinutes(it) },
                 modifier = Modifier
                     .weight(1f)
+                    .testTag("lapMinutesField")
             )
 
             Colon()
@@ -89,6 +93,7 @@ fun FuelScreen(
                 onValueChange = { fuelViewModel.updateLapSeconds(it) },
                 modifier = Modifier
                     .weight(1f)
+                    .testTag("lapSecondsField")
             )
         }
 

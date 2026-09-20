@@ -10,6 +10,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import com.example.fuelcalculator.ui.FuelScreen
 import com.example.fuelcalculator.ui.theme.FuelCalculatorTheme
 
@@ -25,6 +27,9 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .safeContentPadding()
                             .verticalScroll(rememberScrollState())
+                            .semantics {
+                                testTagsAsResourceId = true
+                            }
                     )
                 }
             }
