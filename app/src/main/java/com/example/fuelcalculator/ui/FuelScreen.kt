@@ -17,7 +17,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -29,7 +28,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.fuelcalculator.R
 import com.example.fuelcalculator.ui.theme.FuelCalculatorTheme
 import com.example.fuelcalculator.ui.theme.Typography
 
@@ -50,7 +48,7 @@ fun FuelScreen(
 
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(vertical = dimensionResource(R.dimen.padding_small))
+            modifier = Modifier.padding(vertical = 8.dp)
         ) {
             NumberField(
                 value = fuelViewModel.raceHoursInput,
@@ -77,7 +75,7 @@ fun FuelScreen(
 
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(vertical = dimensionResource(R.dimen.padding_small))
+            modifier = Modifier.padding(vertical = 8.dp)
         ) {
             NumberField(
                 value = fuelViewModel.lapMinutesInput,
@@ -105,7 +103,7 @@ fun FuelScreen(
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
-                .padding(vertical = dimensionResource(R.dimen.padding_small))
+                .padding(vertical = 8.dp)
         ) {
             NumberField(
                 value = fuelViewModel.fuelPerLapInput,
@@ -129,7 +127,7 @@ fun FuelScreen(
             )
         }
 
-        HorizontalDivider(modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium)))
+        HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp))
 
         Text(
             buildAnnotatedString {
@@ -140,7 +138,7 @@ fun FuelScreen(
                 }
             },
             style = Typography.labelLarge,
-            modifier = Modifier.padding(vertical = dimensionResource(R.dimen.padding_small))
+            modifier = Modifier.padding(vertical = 8.dp)
         )
 
         Text(
@@ -153,7 +151,7 @@ fun FuelScreen(
                 }
             },
             style = Typography.labelLarge,
-            modifier = Modifier.padding(vertical = dimensionResource(R.dimen.padding_small))
+            modifier = Modifier.padding(vertical = 8.dp)
         )
     }
 }
@@ -189,7 +187,7 @@ private fun Colon(modifier: Modifier = Modifier) {
         ":",
         fontSize = 20.sp,
         fontWeight = FontWeight.ExtraBold,
-        modifier = modifier.padding(dimensionResource(R.dimen.padding_small))
+        modifier = modifier.padding(8.dp)
     )
 }
 
