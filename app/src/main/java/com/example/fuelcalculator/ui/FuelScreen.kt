@@ -109,7 +109,9 @@ fun FuelScreen(
                 value = fuelViewModel.fuelPerLapInput,
                 label = "Fuel Consumption",
                 onValueChange = { fuelViewModel.updateFuelPerLap(it) },
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .testTag("fuelConsumptionField"),
                 imeAction = ImeAction.Next,
                 suffixText = "Litres/lap"
             )
@@ -121,7 +123,8 @@ fun FuelScreen(
                 label = "Safety margin",
                 onValueChange = { fuelViewModel.updateLapsMargin(it) },
                 modifier = Modifier
-                    .weight(1f),
+                    .weight(1f)
+                    .testTag("safetyMarginField"),
                 imeAction = ImeAction.Done,
                 suffixText = "Laps"
             )

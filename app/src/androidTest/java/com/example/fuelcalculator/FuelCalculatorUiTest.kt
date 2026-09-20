@@ -38,19 +38,57 @@ class FuelCalculatorUiTest {
                 FuelScreen(Modifier.fillMaxSize())
             }
         }
-        val raceHoursFieldTag = "raceHoursField"
 
-        composeTestRule.onNodeWithTag(raceHoursFieldTag).performTextInput("1.2")
-        assertEquals(
-            "",
-            getEditableTextFromTextField(composeTestRule.onNodeWithTag("raceHoursField"))
+        val integerFieldTags = listOf(
+            "raceHoursField",
+            "lapMinutesField",
+            "safetyMarginField"
         )
-        composeTestRule.onNodeWithTag(raceHoursFieldTag).performTextClearance()
-        composeTestRule.onNodeWithTag(raceHoursFieldTag).performTextInput("1")
-        assertEquals(
-            "1",
-            getEditableTextFromTextField(composeTestRule.onNodeWithTag(raceHoursFieldTag))
+
+        val decimalFieldTags = listOf(
+            "raceMinutesField",
+            "lapSecondsField",
+            "fuelConsumptionField"
         )
+
+        integerFieldTags.forEach {
+            composeTestRule.onNodeWithTag(it).performTextClearance()
+
+            // Rejects non-digit characters
+            composeTestRule.onNodeWithTag(it).performTextInput(".")
+            composeTestRule.onNodeWithTag(it).performTextInput(" ")
+            composeTestRule.onNodeWithTag(it).performTextInput("a")
+            assertEquals(
+                "",
+                getEditableTextFromTextField(composeTestRule.onNodeWithTag(it))
+            )
+
+            // Accepts digit characters
+            composeTestRule.onNodeWithTag(it).performTextInput("1")
+            assertEquals(
+                "1",
+                getEditableTextFromTextField(composeTestRule.onNodeWithTag(it))
+            )
+        }
+
+        decimalFieldTags.forEach {
+            composeTestRule.onNodeWithTag(it).performTextClearance()
+
+            // Rejects non-digit characters
+            composeTestRule.onNodeWithTag(it).performTextInput(" ")
+            composeTestRule.onNodeWithTag(it).performTextInput("a")
+            assertEquals(
+                "",
+                getEditableTextFromTextField(composeTestRule.onNodeWithTag(it))
+            )
+
+            // Accepts digits and decimal point characters
+            composeTestRule.onNodeWithTag(it).performTextInput("1.1")
+            assertEquals(
+                "1.1",
+                getEditableTextFromTextField(composeTestRule.onNodeWithTag(it))
+            )
+        }
     }
 }
 
