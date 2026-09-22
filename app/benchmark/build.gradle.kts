@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.benchmark"
+    namespace = "com.talal.benchmark"
     compileSdk {
         version = release(37)
     }

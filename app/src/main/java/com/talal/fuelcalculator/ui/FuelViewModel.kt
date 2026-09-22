@@ -1,4 +1,4 @@
-package com.example.fuelcalculator.ui
+package com.talal.fuelcalculator.ui
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

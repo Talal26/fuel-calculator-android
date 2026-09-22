@@ -1,4 +1,4 @@
-package com.example.benchmark
+package com.talal.benchmark
 
 import androidx.benchmark.macro.StartupMode
 import androidx.benchmark.macro.StartupTimingMetric
@@ -27,7 +27,7 @@ class FuelCalculatorBenchmark {
 
     @Test
     fun startup() = benchmarkRule.measureRepeated(
-        packageName = "com.example.fuelcalculator",
+        packageName = "com.talal.fuelcalculator",
         metrics = listOf(StartupTimingMetric()),
         iterations = 5,
         startupMode = StartupMode.COLD

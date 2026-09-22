@@ -1,4 +1,4 @@
-package com.example.fuelcalculator.ui.theme
+package com.talal.fuelcalculator.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

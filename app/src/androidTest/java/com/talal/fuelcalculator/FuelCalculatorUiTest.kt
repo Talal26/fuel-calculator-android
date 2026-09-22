@@ -1,4 +1,4 @@
-package com.example.fuelcalculator
+package com.talal.fuelcalculator
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
@@ -12,9 +12,9 @@ import androidx.compose.ui.test.performImeAction
 import androidx.compose.ui.test.performTextClearance
 import androidx.compose.ui.test.performTextInput
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.fuelcalculator.ui.FuelScreen
-import com.example.fuelcalculator.ui.test.TestTags
-import com.example.fuelcalculator.ui.theme.FuelCalculatorTheme
+import com.talal.fuelcalculator.ui.FuelScreen
+import com.talal.fuelcalculator.ui.test.TestTags
+import com.talal.fuelcalculator.ui.theme.FuelCalculatorTheme
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule

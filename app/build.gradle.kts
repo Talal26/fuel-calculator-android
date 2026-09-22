@@ -11,11 +11,11 @@ kotlin {
 }
 
 android {
-    namespace = "com.example.fuelcalculator"
+    namespace = "com.talal.fuelcalculator"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.example.fuelcalculator"
+        applicationId = "com.talal.fuelcalculator"
         minSdk = 24
         targetSdk = 37
         versionCode = 1

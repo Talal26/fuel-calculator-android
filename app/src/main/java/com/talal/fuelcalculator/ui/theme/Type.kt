@@ -1,4 +1,4 @@
-package com.example.fuelcalculator.ui.theme
+package com.talal.fuelcalculator.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

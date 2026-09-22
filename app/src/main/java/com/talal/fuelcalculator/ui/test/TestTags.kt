@@ -1,4 +1,4 @@
-package com.example.fuelcalculator.ui.test
+package com.talal.fuelcalculator.ui.test
 
 object TestTags {
     const val RACE_HOURS_FIELD = "raceHoursField"

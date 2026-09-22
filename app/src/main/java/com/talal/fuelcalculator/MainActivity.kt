@@ -1,4 +1,4 @@
-package com.example.fuelcalculator
+package com.talal.fuelcalculator
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,8 +12,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
-import com.example.fuelcalculator.ui.FuelScreen
-import com.example.fuelcalculator.ui.theme.FuelCalculatorTheme
+import com.talal.fuelcalculator.ui.FuelScreen
+import com.talal.fuelcalculator.ui.theme.FuelCalculatorTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

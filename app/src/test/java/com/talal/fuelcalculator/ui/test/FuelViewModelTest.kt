@@ -1,6 +1,6 @@
-package com.example.fuelcalculator.ui.test
+package com.talal.fuelcalculator.ui.test
 
-import com.example.fuelcalculator.ui.FuelViewModel
+import com.talal.fuelcalculator.ui.FuelViewModel
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

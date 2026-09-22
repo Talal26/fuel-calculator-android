@@ -1,4 +1,4 @@
-package com.example.fuelcalculator.ui
+package com.talal.fuelcalculator.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -28,9 +28,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.fuelcalculator.ui.test.TestTags
-import com.example.fuelcalculator.ui.theme.FuelCalculatorTheme
-import com.example.fuelcalculator.ui.theme.Typography
+import com.talal.fuelcalculator.ui.test.TestTags
+import com.talal.fuelcalculator.ui.theme.FuelCalculatorTheme
+import com.talal.fuelcalculator.ui.theme.Typography
 
 @Composable
 fun FuelScreen(

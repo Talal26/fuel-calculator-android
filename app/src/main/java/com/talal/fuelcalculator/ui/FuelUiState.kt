@@ -1,4 +1,4 @@
-package com.example.fuelcalculator.ui
+package com.talal.fuelcalculator.ui
 
 data class FuelUiState(
     val numberOfLaps: Double = 0.0,
